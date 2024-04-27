@@ -25,7 +25,7 @@ public class Client implements Runnable {
     private Socket socket;
     private String addr;
     private int port; // ip адрес клиента
-    private File servers = new File("./target/servers.json");
+    private File servers = new File("./servers.json");
     private Map<Integer, String> serverAddresses = new HashMap<>();
     private Map<Integer, Integer> serverPorts = new HashMap<>();
 
@@ -70,7 +70,7 @@ public class Client implements Runnable {
         if (!servers.exists()) {
             servers.createNewFile();
         }
-        URL pathToFileOfServer = new URL("http://www.website.com/information.asp"); //оригинальный servers.json со списком серверов
+        URL pathToFileOfServer = new URL("https://raw.githubusercontent.com/SergeyIvanov11/NetworkChat/main/servers.json"); //оригинальный servers.json со списком серверов
         try (InputStream in = pathToFileOfServer.openStream()) {
             Files.copy(in, servers.toPath(), StandardCopyOption.REPLACE_EXISTING);
         }
